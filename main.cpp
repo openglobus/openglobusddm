@@ -72,7 +72,9 @@ int main(int argc, char* argv[]){
 		option("-s", "--start").doc("Start lon lat coordonates") \
 		& value("lon", topleftlon) & value("lat", topleftlat),
 		option("-e", "--end").doc("End lon lat coordonates") \
-		& value("lon", bottomrightlon) & value("lat", bottomrightlat)
+		& value("lon", bottomrightlon) & value("lat", bottomrightlat),
+		option("-x", "--quadsize").doc("Quadsize resolution default 33") \
+		& value("size", quadSize)
 		);
 
 	if (!parse(argc, argv, cli)) {
@@ -90,6 +92,7 @@ int main(int argc, char* argv[]){
 	std::cout << "zoom: " << zoom << "\n";
 	std::cout << "topleftlonlat: " << topleftlon << "|" << topleftlat << "\n";
 	std::cout << "bottomrightlonlat: " << bottomrightlon << "|" << bottomrightlat << "\n";
+	std::cout << "quadsize: " << quadSize << "\n";
 
 	int qn_start = Lon2Merc(topleftlon);
 	int qn_end = Lon2Merc(bottomrightlon);
